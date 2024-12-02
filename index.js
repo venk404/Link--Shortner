@@ -4,14 +4,18 @@ const urlroute = require("./Route/Url");
 const { ConnectwithDb } = require("./Connect");
 
 
+require('dotenv').config();
+
 const app = express();
 const port = 8001;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+console.log(process.env.MONGOURL)
 
-ConnectwithDb(process.env.MongoUrl).then(()=>console.log("Db connected"))
+
+ConnectwithDb(process.env.MONGOURL).then(()=>console.log("Db connected"))
 
 
 // Register the URL route
